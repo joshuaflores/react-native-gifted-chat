@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { ListView, FlatList, View } from 'react-native'
+import { ListView, FlatList, View, StyleSheet } from 'react-native'
 
 import shallowequal from 'shallowequal'
 import md5 from 'md5'
-import InvertibleFlatList from './InvertibleFlatList'
 import LoadEarlier from './LoadEarlier'
 import Message from './Message'
 
@@ -118,29 +117,44 @@ export default class MessageContainer extends React.Component {
     if (this.props.renderMessage) {
       return this.props.renderMessage(messageProps)
     }
-    return <Message {...messageProps} />
+    return (
+      <View style={[styles.container, styles.flipVertical]}>
+        <Message {...messageProps} />
+      </View>
+    )
   }
 
   render() {
     return (
-      <InvertibleFlatList
-        inverted={true}
-        automaticallyAdjustContentInsets={false}
-        enableEmptySections={true}
-        removeClippedSubviews={true}
-        pageSize={20}
-        {...this.props.listViewProps}
-        style={{ flexGrow: 1 }}
-        ref={component => (this._listRef = component)}
-        data={this.state.dataSource.keys}
-        keyExtractor={(item, idx) => item}
-        renderItem={this.renderRow}
-        renderHeader={this.renderFooter}
-        renderFooter={this.renderLoadEarlier}
-      />
+      <View style={[styles.container, styles.flipVertical]}>
+        <FlatList
+          inverted={true}
+          automaticallyAdjustContentInsets={false}
+          enableEmptySections={true}
+          removeClippedSubviews={true}
+          pageSize={20}
+          {...this.props.listViewProps}
+          style={{ flexGrow: 1 }}
+          ref={component => (this._listRef = component)}
+          data={this.state.dataSource.keys}
+          keyExtractor={(item, idx) => item}
+          renderItem={this.renderRow}
+          renderHeader={this.renderFooter}
+          renderFooter={this.renderLoadEarlier}
+        />
+      </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  flipVertical: {
+    transform: [{ scaleY: -1 }]
+  }
+})
 
 MessageContainer.defaultProps = {
   messages: [],
