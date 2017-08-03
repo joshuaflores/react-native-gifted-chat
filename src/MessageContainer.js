@@ -4,8 +4,8 @@ import React from 'react'
 import { ListView, FlatList, View } from 'react-native'
 
 import shallowequal from 'shallowequal'
-import { InvertibleFlatList } from 'react-native-invertible-flat-list'
 import md5 from 'md5'
+import InvertibleFlatList from './InvertibleFlatList'
 import LoadEarlier from './LoadEarlier'
 import Message from './Message'
 

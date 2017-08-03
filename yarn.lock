@@ -1012,10 +1012,6 @@ react-native-communications@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-native-communications/-/react-native-communications-2.2.1.tgz#7883b56b20a002eeb790c113f8616ea8692ca795"
 
-react-native-invertible-flat-list@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-invertible-flat-list/-/react-native-invertible-flat-list-1.1.0.tgz#1b29cae91eba7657b2757976034d39787b78314b"
-
 react-native-lightbox@oblador/react-native-lightbox#c84a8543d4511fe6a44c3d7820747c9c1bddd875:
   version "0.6.0"
   resolved "https://codeload.github.com/oblador/react-native-lightbox/tar.gz/c84a8543d4511fe6a44c3d7820747c9c1bddd875"
